@@ -1,8 +1,8 @@
-# ThisTimeIsTheTime 
+# Test Project 
         
 ## Description
         
-This should definitly work right?
+This project is to create a README generator
 
 ## Table of Contents
 - [Installation](#installation)
@@ -10,7 +10,7 @@ This should definitly work right?
 - [Contributing](#contributing)
 - [License](#license)
 - [Test](#test)
-- [Questions](#questions)
+- [Contact](#contact)
 
 ## Installation
 
@@ -18,17 +18,21 @@ N/A
 
 ## Usage
 
-Inout on index.js
+Just type node index.js in the terminal and answer the questions
 
 ## Contributing
 
 N/A
 
+## License
+
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 ## Test
 
 undefined
 
-## Questions
+## Contact
 
-MayaLynn96.gihub.com
+https://github.com/Mayalynn96
 mayalynncohen@gmail.com

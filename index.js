@@ -1,92 +1,151 @@
 const questions = require('inquirer');
-const fs = require('fs')
+// const fs = require('fs')
 
 questions.prompt([
     {
-        type: "input",
-        name: "projectName",
-        message: "Hello, Please enter your project name!"
+        type: "confirm",
+        name: "needIstallation",
+        message: "Is there any installation instructions?",
+        default: "no"
     },
     {
-        type: "input",
-        name: "description",
-        message: "Please enter a detailed description of your project"
-    },
-    {
-        type: "input",
+        type: "confirm",
         name: "installation",
-        message: "Enter Installation Instructions or N/A if there are none"
+        message: "Does your project require npm packages?",
+        when: (answers) => answers.needIstallation
     },
     {
         type: "input",
-        name: "usage",
-        message: "Please enter Usage Instructions"
-    },
-    {
-        type: "list",
-        name: "liscense",
-        message: "What liscence is your project under?",
-        choices: ["Apache License 2.0", "GNU General Public License v3.0", "MIT License", "BSD 2-Clause 'simplified' License", "BSD 3-Clause 'New' or 'Revised' License", "Boost Software License 1.0", "Creative Commons Zero v1.0 Universal", "Eclipse Public License 2.0", "GNU Affero General Public License v3.0", "GNU General Public License v2.0", "GNU LEsser General Public License v2.1", "Mozilla Public License 2.0", "The Unlicense"]
-    },
-    {
-        type: "input",
-        name: "contributing",
-        message: "Enter Contribution guidelines or N/A if there are none"
-    },
-    {
-        type: "input",
-        name: "tests",
-        message: "Enter Test Instructions or N/A if there are none"
-    },
-    {
-        type: "input",
-        name: "github",
-        message: "Please enter your GitHub profile link"
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "Please enter your email address"
+        name: "npms",
+        message: "What is your username?",
     }
-]).then((data) => {
-    readmeTextContent =
- `# ${data.projectName} 
+])
+
+
+// .then ((answers) => {
+//     if(answers.isInstallation){
+//         questions.prompt({
+//             type: "input",
+//             name: "installation",
+//             message: "Enter Installation Instructions"
+//             })
+//     }
+//     questions.prompt([
+//         {
+//             type: "Input",
+//             name: "giveName",
+//             message: "What is your name?"
+//             }
+//     ])
+// })
+
+// questions.prompt([
+//     {
+//         type: "input",
+//         name: "projectName",
+//         message: "Hello, Please enter your project name!"
+//     },
+//     {
+//         type: "input",
+//         name: "type",
+//         message: "What type of project is it?"
+//     },
+//     {
+//         type: "input",
+//         name: "description",
+//         message: "This project is meant to..."
+//     },
+//     {
+//         type: "confirm",
+//         name: "isInstallation",
+//         message: "Is there any installation instructions?"
+//     },
+//     {
+//         type: "input",
+//         name: "installation",
+//         message: "Enter Installation Instructions",
+//         when: function(answers) {
+            
+//         }
+//     },
+//     {
+//         type: "input",
+//         name: "usage",
+//         message: "Please enter Usage Instructions"
+//     },
+//     {
+//         type: "list",
+//         name: "license",
+//         message: "What liscence is your project under?",
+//         choices: ["Apache 2.0", "MIT", "BSD 2-Clause", "BSD 3-Clause", "GNU Affero General Public License v3.0", "GNU Lesser General Public License v2.1", "Mozilla Public License 2.0"]
+//     },
+//     {
+//         type: "list",
+//         name: "licenseColor",
+//         message: "Choose a color for your license badge",
+//         choices: ["red", "orange", "yellow", "yellowgreen", "brightgreen","green", "blue", "lightgrey"]
+//     },
+//     {
+//         type: "input",
+//         name: "contributing",
+//         message: "Enter Contribution guidelines or N/A if there are none"
+//     },
+//     {
+//         type: "input",
+//         name: "tests",
+//         message: "Enter Test Instructions or N/A if there are none"
+//     },
+//     {
+//         type: "input",
+//         name: "github",
+//         message: "Please enter your GitHub profile link"
+//     },
+//     {
+//         type: "input",
+//         name: "email",
+//         message: "Please enter your email address"
+//     }
+// ]).then((data) => {
+//     readmeTextContent =
+//  `# ${data.projectName} 
         
-## Description
+// ## Description
         
-${data.description}
+// ${data.description}
 
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Test](#test)
-- [Questions](#questions)
+// ## Table of Contents
+// - [Installation](#installation)
+// - [Usage](#usage)
+// - [Contributing](#contributing)
+// - [License](#license)
+// - [Test](#test)
+// - [Questions](#questions)
 
-## Installation
+// ## Installation
 
-${data.installation}
+// ${data.installation}
 
-## Usage
+// ## Usage
 
-${data.usage}
+// ${data.usage}
 
-## Contributing
+// ## Contributing
 
-${data.contributing}
+// ${data.contributing}
 
-## License
+// ## License
 
-## Test
+// ![License](https://img.shields.io/badge/License-${data.license}-${data.licenseColor}.svg)
 
-${data.test}
+// ## Test
 
-## Questions
+// ${data.test}
 
-${data.github}
-${data.email}
-`
-fs.writeFile(`README.md`, readmeTextContent, (err) =>
-        err ? console.log(err) : console.log("success!"))
-});
+// ## Questions
+
+// ${data.github}
+// ${data.email}
+// `
+// fs.writeFile(`README.md`, readmeTextContent, (err) =>
+//         err ? console.log(err) : console.log("success!"))
+// });
