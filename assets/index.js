@@ -1,7 +1,7 @@
-const questions = require('inquirer');
+const inquirer = require('inquirer');
 const fs = require('fs')
 
-questions.prompt([
+inquirer.prompt([
     {
         type: "input",
         name: "projectName",
@@ -9,14 +9,24 @@ questions.prompt([
     },
     {
         type: "list",
-        name: "type",
+        name: "projectType",
         message: "What type of project is it?",
-        choices: ["a Website", "an Application", "a File Generator"]
+        choices: ["Website", "Application", "Backend File Generator"]
     },
     {
         type: "input",
-        name: "description",
-        message: "Give a detailed description of your project"
+        name: "problem",
+        message: "What does it do?/What problem does it solve?"
+    },
+    {
+        type: "input",
+        name: "motivations",
+        message: "What were the motivations to build this project?"
+    },
+    {
+        type: "input",
+        name: "extraDescription",
+        message: "What did you learn? Anything else to add to the description?"
     },
     {
         type: "confirm",
@@ -81,12 +91,28 @@ questions.prompt([
         message: "Please enter your email address"
     }
 ]).then((data) => {
+    const projectTypeArr = data.projectType.split(" ");
+    const projectTypeArrstring = projectTypeArr.join("_")
+    
+    const licenseTypeArr = data.license.split(" ");
+    const licenseTypeArrstring = licenseTypeArr.join("_")
+    // making a badge for the project type in the description
+    let typeBadgeColor = "white";
+
+    if(data.projectType === "Website"){
+        typeBadgeColor = "green";
+    } else if(data.projectType === "Application"){
+        typeBadgeColor = "blue";
+    } else if(data.projectType === "Backend File Generator"){
+        typeBadgeColor = "red";
+    }
+
+    // turning the packages list into a nice list if there is any and adding the other instructions
     let npmList = "";
 
     if(data.needNpm){
         const allNpmString = data.npm
         const allNpm = allNpmString.split("/")
-        console.log(allNpm)
          allNpm.forEach(element => {
             npmList = npmList + "\n" + "-" + element + "\n"
          });
@@ -96,9 +122,8 @@ questions.prompt([
 
     if(data.needNpm){
         instructionText = `
-If the folder contains a package.json and package-lock.json file, simply enter 'npm install' in the terminal.
-If the folder only contains a package.json, follow step 2 of the next instructions.
-If none of those files are available make sure to follow these steps:
+If the folder contains a package.json with dependencies listed and/or package-lock.json file, simply enter 'npm install' in the terminal.
+If none of those files are available or there aren't any dependencies listed in the package.json make sure to follow these steps:
 
 1. type 'npm init' into the terminal
 2. type 'npm package-name@version' for each package listed below:
@@ -118,11 +143,13 @@ ${npmList}
     }
 
     readmeTextContent =
- `# ${data.projectName} 
+`# ${data.projectName} 
         
 ## Description
         
-${data.description}
+![License](https://img.shields.io/badge/Type-${projectTypeArrstring}-${typeBadgeColor}.svg)
+
+${data.problem} ${data.motivations} ${data.extraDescription}
 
 ## Table of Contents
 - [Installation](#installation)
@@ -143,7 +170,7 @@ ${data.usage}
 
 ## License
 
-![License](https://img.shields.io/badge/License-${data.license}-${data.licenseColor}.svg)
+![License](https://img.shields.io/badge/License-${licenseTypeArrstringe}-${data.licenseColor}.svg)
 
 ## Credit
 
@@ -159,9 +186,10 @@ ${data.contributing}
 
 ## Questions
 
-${data.github}
-${data.email}
-`
+Find me on GitHub: ${data.github}
+
+Or email me at: ${data.email}`
+
 fs.writeFile(`README.md`, readmeTextContent, (err) =>
         err ? console.log(err) : console.log("success!"))
 });
