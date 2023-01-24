@@ -1,38 +1,53 @@
-# Test Project 
+# NewTest 
         
 ## Description
         
-This project is to create a README generator
+Generates professional README
 
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
+- [Credit](#credit)
 - [Test](#test)
-- [Contact](#contact)
+- [Contributing](#contributing)
+- [Questions](#questions)
 
 ## Installation
 
-N/A
+
+If the folder contains a package.json and package-lock.json file, simply enter 'npm install' in the terminal.
+If the folder contains a package.json but no package-lock.json, follow step 2 of the next instructions.
+If none of those files are available make sure to follow these steps:
+
+1. type 'npm init' into the terminal
+2. type 'npm package-name@version' for each package listed below:
+
+-inquirer@4.2.8
+
+-fuzzy
 
 ## Usage
 
-Just type node index.js in the terminal and answer the questions
-
-## Contributing
-
-N/A
+Answer questions in terminal
 
 ## License
 
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+## Credit
+
+N/A
+
 ## Test
 
-undefined
+N/A
 
-## Contact
+## Contributing
+
+N/A
+
+## Questions
 
 https://github.com/Mayalynn96
 mayalynncohen@gmail.com
