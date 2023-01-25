@@ -1,6 +1,8 @@
+// calling inquirer and fs
 const inquirer = require('inquirer');
 const fs = require('fs')
 
+// prompting questions to fill README
 inquirer.prompt([
     {
         type: "input",
@@ -8,15 +10,15 @@ inquirer.prompt([
         message: "Hello, Please enter your project name!"
     },
     {
-        type: "list",
+        type: "input",
         name: "projectType",
         message: "What type of project is it?",
-        choices: ["Website", "Application", "Backend File Generator"]
     },
     {
         type: "input",
         name: "badgeColor",
-        message: "Enter a color for your project type badge"
+        message: "Enter a color for your project type badge",
+        default: "pink"
     },
     {
         type: "input",
@@ -59,13 +61,13 @@ inquirer.prompt([
         type: "list",
         name: "license",
         message: "What liscence is your project under?",
-        choices: ["Apache 2.0", "MIT", "BSD 2-Clause", "BSD 3-Clause", "GNU Affero General Public License v3.0", "GNU Lesser General Public License v2.1", "Mozilla Public License 2.0"]
+        choices: ["Apache 2.0", "MIT", "BSD 2Clause", "BSD 3Clause", "GNU Affero General Public License v3.0", "GNU Lesser General Public License v2.1", "Mozilla Public License 2.0"]
     },
     {
-        type: "list",
+        type: "input",
         name: "licenseColor",
-        message: "Choose a color for your license badge",
-        choices: ["red", "orange", "yellow", "yellowgreen", "brightgreen","green", "blue", "lightgrey"]
+        message: "Please enter a color for your license badge",
+        default: "blue"
     },
     {
         type: "input",
@@ -96,15 +98,15 @@ inquirer.prompt([
         message: "Please enter your email address"
     }
 ]).then((data) => {
-    const projectTypeArr = data.projectType.split(" ");
-    const projectTypeArrstring = projectTypeArr.join("_")
-    
-    const licenseTypeArr = data.license.split(" ");
-    const licenseTypeArrstring = licenseTypeArr.join("_")
-    // making a badge for the project type in the description
-    const typeBadgeColorArr = data.badgeColor.split(" ")
-    let typeBadgeColor = typeBadgeColorArr.join("");
-
+    // Makes sure the item entered is in the right format
+    function joinSpaces(string, sep){
+        const stringArr = string.split(" ")
+        return stringArr.join(sep)
+    }
+    const projectTypeArrstring = joinSpaces(data.projectType, "_")
+    const licenseTypeArrstring = joinSpaces(data.license, "_")
+    const typeBadgeColor = joinSpaces(data.badgeColor, "")
+    const licenseBadgeColor = joinSpaces(data.licenseColor, "")
     
     // turning the packages list into a nice list if there is any and adding the other instructions
     let npmList = "";
@@ -116,9 +118,9 @@ inquirer.prompt([
             npmList = npmList + "\n" + "-" + element + "\n"
          });
     }
-
+    // Making tmarkdown for installation instructions to fit user input
     let instructionText = "";
-
+    // if there is npms to install it will add the following text to installation instructions
     if(data.needNpm){
         instructionText = `
 If the folder contains a package.json with dependencies listed and/or package-lock.json file, simply enter 'npm install' in the terminal.
@@ -130,7 +132,7 @@ If none of those files are available or there aren't any dependencies listed in 
 ${npmList}
 `;
     } 
-
+    // if there is more installation instruction they will be added and if not but there is npms it won't add the default
     if(data.installation != "N/A"){
         instructionText = `
         ${instructionText}
@@ -140,7 +142,7 @@ ${npmList}
     } else if(!data.needNpm){
         instructionText = data.installation
     }
-
+    // markedown for fs.writeFile README
     readmeTextContent =
 `# ${data.projectName} 
         
@@ -169,7 +171,7 @@ ${data.usage}
 
 ## License
 
-![License](https://img.shields.io/badge/License-${licenseTypeArrstring}-${data.licenseColor}.svg)
+![License](https://img.shields.io/badge/License-${licenseTypeArrstring}-${licenseBadgeColor}.svg)
 
 ## Credit
 
@@ -188,7 +190,7 @@ ${data.contributing}
 Find me on GitHub: ${data.github}
 
 Or email me at: ${data.email}`
-
+// Creating the new README with fs.writeFile
 fs.writeFile(`README.md`, readmeTextContent, (err) =>
         err ? console.log(err) : console.log("success!"))
 });
