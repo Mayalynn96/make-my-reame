@@ -149,6 +149,7 @@ ${npmList}
 ## Description
         
 ![Type](https://img.shields.io/badge/Type-${projectTypeArrstring}-${typeBadgeColor}.svg)
+![License](https://img.shields.io/badge/License-${licenseTypeArrstring}-${licenseBadgeColor}.svg)
 
 ${data.problem} ${data.motivations} ${data.extraDescription}
 
@@ -171,7 +172,7 @@ ${data.usage}
 
 ## License
 
-![License](https://img.shields.io/badge/License-${licenseTypeArrstring}-${licenseBadgeColor}.svg)
+This project is covered under the ${data.license} license.
 
 ## Credit
 

@@ -1,8 +1,9 @@
-# make-my-README  
-        
+# make-my-README
+
+![Type](https://img.shields.io/badge/Type-README_Generator-553555.svg)
+
+![License](https://img.shields.io/badge/License-MIT-pink.svg)
 ## Description
-        
-![Type](https://img.shields.io/badge/Type-Backend_File_Generator-553555.svg)
 
 It is meant to automatically create a professional README from the given user input. Writting a README is for me, and many others, not our  favorite task. A generator like this one helps making it much faster by automizing most of the process. This project helped me learn more about inquirer and asynchronicity.
 
@@ -37,7 +38,7 @@ To use the generator, make sure to install the apropriate npm package as instruc
 
 ## License
 
-![License](https://img.shields.io/badge/License-MIT-pink.svg)
+This project is covered under the MIT license.
 
 ## Credit
 
