@@ -15,6 +15,11 @@ inquirer.prompt([
     },
     {
         type: "input",
+        name: "badgeColor",
+        message: "Enter a color for your project type badge"
+    },
+    {
+        type: "input",
         name: "problem",
         message: "What does it do?/What problem does it solve?"
     },
@@ -97,16 +102,10 @@ inquirer.prompt([
     const licenseTypeArr = data.license.split(" ");
     const licenseTypeArrstring = licenseTypeArr.join("_")
     // making a badge for the project type in the description
-    let typeBadgeColor = "white";
+    const typeBadgeColorArr = data.badgeColor.split(" ")
+    let typeBadgeColor = typeBadgeColorArr.join("");
 
-    if(data.projectType === "Website"){
-        typeBadgeColor = "green";
-    } else if(data.projectType === "Application"){
-        typeBadgeColor = "blue";
-    } else if(data.projectType === "Backend File Generator"){
-        typeBadgeColor = "red";
-    }
-
+    
     // turning the packages list into a nice list if there is any and adding the other instructions
     let npmList = "";
 
@@ -147,7 +146,7 @@ ${npmList}
         
 ## Description
         
-![License](https://img.shields.io/badge/Type-${projectTypeArrstring}-${typeBadgeColor}.svg)
+![Type](https://img.shields.io/badge/Type-${projectTypeArrstring}-${typeBadgeColor}.svg)
 
 ${data.problem} ${data.motivations} ${data.extraDescription}
 
@@ -170,7 +169,7 @@ ${data.usage}
 
 ## License
 
-![License](https://img.shields.io/badge/License-${licenseTypeArrstringe}-${data.licenseColor}.svg)
+![License](https://img.shields.io/badge/License-${licenseTypeArrstring}-${data.licenseColor}.svg)
 
 ## Credit
 
