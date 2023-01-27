@@ -1,11 +1,11 @@
-# ProjectName 
+# MyWitchyProject 
         
 ## Description
         
-![Type](https://img.shields.io/badge/Type-Demo-blue.svg)
-![License](https://img.shields.io/badge/License-BSD_2Clause-green.svg)
+![Type](https://img.shields.io/badge/Type-Website-331F31.svg)
+![License](https://img.shields.io/badge/License-MIT-pink.svg)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+As a fan of all things witchy including tarot, it is difficult to find a good website to keep track of our readings and learn from them. This website does exactly that! It will allow the user to enter cards they drew and their interpretations. This is still very much a work in progress. I want to create something useful to me that would passionate me and keep me coding actively! Additionaly I added my own tarot deck made by myself with the help of the Midjourney AI
 
 ## Table of Contents
 - [Installation](#installation)
@@ -18,29 +18,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ## Installation
 
-
-If the folder contains a package.json with dependencies listed and/or package-lock.json file, simply enter 'npm install' in the terminal.
-If none of those files are available or there aren't any dependencies listed in the package.json make sure to follow these steps:
-
-1. type 'npm init' into the terminal
-2. type 'npm package-name@version' for each package listed below:
-
-
--inquirer@8.2.4
-
-
+N/A
 
 ## Usage
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+None so far but will change eventually!
 
 ## License
 
-This project is covered under the BSD 2Clause license.
+This project is covered under the MIT license.
 
 ## Credit
 
-N/A
+Midjourney AI
 
 ## Test
 
@@ -48,7 +38,7 @@ N/A
 
 ## Contributing
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+N/A
 
 ## Questions
 
